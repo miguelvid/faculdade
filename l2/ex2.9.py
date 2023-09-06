@@ -1,0 +1,1 @@
+print('N entedi direito hihi, sory')
