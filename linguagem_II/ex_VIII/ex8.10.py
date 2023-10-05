@@ -13,14 +13,14 @@
                     # Fita
                     # Sala Estudos 
 
-''''
-# Implemente a seguinte estrutura de classes:
+'''
+# Implemente a seguinte estrutura de classes(herança):
 
-                Item
-                  |
-          +-------+--------+
-          |                | 
-        Livro           ItemRestrio      
+                       Item
+                        |
+                +-------+--------+
+                |                | 
+              Livro           ItemRestrio      
 
 '''
 
