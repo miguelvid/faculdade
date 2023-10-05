@@ -11,7 +11,18 @@
      # ItemRestrito
         # +alterarnivel()
                     # Fita
-                    # Sala Estudos
+                    # Sala Estudos 
+
+''''
+# Implemente a seguinte estrutura de classes:
+
+                Item
+                  |
+          +-------+--------+
+          |                | 
+        Livro           ItemRestrio      
+
+'''
 
 from abc import ABC, abstractmethod
 
