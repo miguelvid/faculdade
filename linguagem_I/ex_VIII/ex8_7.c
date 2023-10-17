@@ -1,8 +1,8 @@
 
-
-
-
-
+/*
+Inicialize um vetor de 10 posicoes de inteiros aleatoriamente. (use a funcao rand() ).
+Mostre  todo o vetor usando dois ponteiros : um começando do início do vetor e outro do final.
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
