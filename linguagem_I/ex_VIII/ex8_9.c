@@ -1,3 +1,11 @@
+
+/*
+Faça um programa que efetue a soma dos valores de cada posição de dois
+arrays 4 x 4 e armazene em um terceiro array de 4 x 4 o resultado. Utilize
+somente ponteiros. 
+*/
+
+
 #include <stdio.h>
 
 int main() {
