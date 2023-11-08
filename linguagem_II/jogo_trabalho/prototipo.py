@@ -9,7 +9,7 @@ x = random.choice(positions)
 second_rectangle_x = 66.6 + 3.8
 second_rectangle_y = 95
 game_over = False
-movement_delay = 2
+movement_delay = 1.5
 movement_timer = 0
 
 obstacles = []
@@ -20,7 +20,7 @@ def create_obstacle():
     obstacles.append(obstacle)
 
 def update():
-    global second_rectangle_x, game_over, movement_timer, second_rectangle_y
+    global second_rectangle_x, game_over, movement_timer,second_rectangle_y
 
     if pyxel.btnp(pyxel.KEY_Q):
         pyxel.quit()
@@ -41,7 +41,7 @@ def update():
             movement_timer = pyxel.frame_count
 
         for obstacle in obstacles:
-            obstacle['y'] += 7
+            obstacle['y'] += 4
             if obstacle['y'] > 120:
                 obstacles.remove(obstacle)
 
@@ -49,19 +49,9 @@ def update():
         if random.random() < 0.03 and len(obstacles) < 2:  # Ajuste a probabilidade e o limite de obstáculos
             create_obstacle()
 
-        # Verifique a colisão entre o retângulo móvel e obstáculos
-        for obstacle in obstacles:
-            if (
-                second_rectangle_x + 20 > obstacle['x']
-                and second_rectangle_x < obstacle['x'] + 20
-                and second_rectangle_y + 30 > obstacle['y']
-                and second_rectangle_y < obstacle['y'] + 30
-            ):
-                game_over = True
-                return
-
 def draw():
     pyxel.cls(0)
+    second_rectangle_y = 95
     pyxel.rect(40, 0, 26.6, 120, 11)
     pyxel.rect(66.6, 0, 26.6, 120, 12)
     pyxel.rect(92.6, 0, 26.6, 120, 13)
