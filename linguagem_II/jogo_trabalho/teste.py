@@ -37,6 +37,7 @@ class MovingObstacle(Obstacle):
 class Game:
     def __init__(self):
         pyxel.init(160, 120)
+        pyxel.load("PYXEL_RESOURCE_FILE.pyxres")
         self.player = Player(66.6 + 3.8, 95)
         self.obstacles = []
         self.game_over = False
@@ -52,6 +53,14 @@ class Game:
         x = random.choice(positions)
         obstacle = MovingObstacle(x, 0)
         self.obstacles.append(obstacle)
+    
+    def restart_game(self):
+        self.player = Player(66.6 + 3.8, 95)
+        self.obstacles = []
+        self.game_over = False
+        self.started = False
+        self.show_start_text = True
+        self.movement_timer = 0
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_Q):
@@ -72,7 +81,7 @@ class Game:
                     elif pyxel.btn(pyxel.KEY_RIGHT):
                         self.player.move("right")
                     self.movement_timer = pyxel.frame_count
-
+            
                 for obstacle in self.obstacles:
                     obstacle.move()
                     if obstacle.y > 120:
@@ -95,12 +104,18 @@ class Game:
                 ):
                     self.create_obstacle()
 
+        if self.game_over:
+            if pyxel.btnp(pyxel.KEY_SPACE):
+                self.restart_game()
+
     def draw(self):
         pyxel.cls(0)
 
-        pyxel.rect(40, 0, 26.6, 120, 11)
-        pyxel.rect(66.6, 0, 26.6, 120, 12)
+        pyxel.rect(40, 0, 26.6, 120, 13 )
+        pyxel.rect(66.6, 0, 26.6, 120, 13)
         pyxel.rect(92.6, 0, 26.6, 120, 13)
+        pyxel.blt(60, 0, img=0, u=0, v=0, w=1000, h=120, colkey= pyxel.COLOR_BLACK)
+        pyxel.blt(85, 0, img=0, u=0, v=0, w=1000, h=120, colkey= pyxel.COLOR_BLACK)
 
         pyxel.rect(self.player.x, self.player.y, 20, 30, 14)
 
@@ -109,11 +124,14 @@ class Game:
 
         if self.show_start_text:
             pyxel.cls(0)
-            pyxel.text(68, 50, "Start", pyxel.frame_count // 3 % 16)  # Alternando cores
+            pyxel.text(69, 50, "Start", pyxel.frame_count // 3 % 16)  # Alternando cores
             pyxel.text(50, 60, "Pressione Espaco", 7)
 
         if self.game_over:
-            pyxel.text(60, 50, "Game Over", 8)
+            pyxel.rect(59, 48, 40, 10, 0)
+            pyxel.text(62, 50, "Game Over", pyxel.COLOR_ORANGE)
+            pyxel.text(50, 60, "Pressione Espaco", 7)
+
 
 def run_game():
     global game
