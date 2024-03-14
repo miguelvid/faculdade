@@ -38,16 +38,21 @@ void setdata (data *d, int _dia, int _mes, int _ano) {
 void setdata_inteira (data *d, int _inteira) {
 	int dia, mes, ano;
 
-    // Verificação se o valor
-    if (_inteira < 1000000 || _inteira > 99991231) {
+    // Verificação de o valor
+    if (_inteira < 100000 || _inteira > 99991231) {
         printf("Valor de data inválido.\n");
         return;
     }
 
-    // Extração do dia, mês e ano
-    dia = _inteira / 1000000;
-    mes = (_inteira % 1000000) / 10000;
-    ano = _inteira % 10000;
+    if (_inteira < 1000000) {
+        dia = _inteira / 10000;
+        mes = (_inteira % 10000) / 100;
+        ano = _inteira % 100;  // Os 2 últimos dígitos representam o ano
+    } else {
+        dia = _inteira / 1000000;
+        mes = (_inteira % 1000000) / 10000;
+        ano = _inteira % 10000;  // Os 4 últimos dígitos representam o ano
+    }
 
     // Atribuição dos componentes
     d->dia = dia;
