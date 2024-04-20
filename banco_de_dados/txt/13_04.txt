@@ -1,0 +1,74 @@
+Modelo Logico Relacional.
+
+editora(#cdeditora, nmeditora, endereco, contato)
+autor(#cdautor, nmautor, nacionalidade)
+funcionario(#cdfuncionario, nmfuncionario, cpf, funcao, salario, telefone, endereco, dtnascimento)
+usuario(#cdusuario, nmusuario, cpf, endereco, telefone, fklivro)
+	fklivro referencia livro
+escreve(#fkautor, #fklivro)
+	fkautor referencia autor
+	fklivro referencia livro
+livro(#nrlivro, genero, titulo, anopublicacao, edicao, fkusuario, fkeditora, fkfuncionario)
+	fkusuario referencia usuario
+	fkeditora referencia editora
+	fkfuncionario referencia funcionario
+
+
+
+CREATE TABLE Editora (
+	cdeditora INT PRIMARY KEY,
+  	nmeditora varchar(50) NOT NULL,
+  	endereco VARCHAR(50),
+  	contato VARCHAR(50)
+);
+
+CREATE TABLE Autor (
+	cdautor INT PRIMARY KEY,
+  	nmautor VARCHAR(50) NOT NULL,
+  	nacionalidade VARCHAR(50)
+);
+
+CREATE TABLE Funcionario (
+	cdfuncionario INT PRIMARY KEY,
+  	nmfuncionario VARCHAR(50) NOT NULL,
+  	cpf CHAR(11) UNIQUE,
+  	funcao VARCHAR(50),
+  	salario MONEY,
+  	telefone VARCHAR(50),
+  	endereco VARCHAR(50),
+  	dtnascimento DATE
+);
+
+CREATE TABLE Usuario (
+	cdusuario INT PRIMARY KEY,
+  	nmusuario VARCHAR(50) NOT NULL,
+  	cpf CHAR(11) UNIQUE,
+  	telefone VARCHAR(50),
+  	endereco VARCHAR(50),
+	
+);
+
+CREATE TABLE Livro (
+	nrlivro INT PRIMARY KEY,
+  	genero VARCHAR(50),
+  	titulo VARCHAR(50),
+  	ano_publicacao DATE,
+  	edicao INT,
+  	fkusuario INT REFERENCES usuario(cdusuario),
+ 	fkediora INT REFERENCES editora(cdeditora),
+  	fkfuncionario INT REFERENCES funcionario(cdfuncionario)
+);
+
+CREATE TABLE Escreve (
+	fkautor INT REFERENCES autor(cdautor),
+  	fkkivro INT REFERENCES livro(nrlivro),
+  	PRIMARY KEY (fkautor, fklivro)
+);
+
+
+// adiciona chave estragenira dps de tabela ser criada
+ALTER TABLE usuario
+	ADD COLUMN fklivro INT REFERENCES livro(nrlivro);
+
+
+

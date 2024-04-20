@@ -1,0 +1,110 @@
+Modelo Logico Relacional:
+
+projeto(#cdprojeto, nmprojeto, local, dsprojeto)
+equipamento(#cdequipamento, preço, n_serie, dsequipamento, fkprojeto)
+	fkprojeto referencia projeto
+pesquisador(#cdpesquisador, nmpesquisador, rg, endereço, fkprojeto)
+	fkprojeto referencia projeto
+computador(#cdcomputador, placas, memoria, processador, fkpesquisador, fkequipamento)
+	fkpesquisador referencia pesquisador
+	fkequipamento referencia equipamento
+impressora(#cdimpressora, tipo, fkpesquisador, fkequipamento)
+	fkpesquisador referencia pesquisador
+	fkequipamento referencia equipamento
+
+Scripts em PostgresSql:
+
+CREATE TABLE Projeto (
+    cdprojeto INT PRIMARY KEY,
+    nmprojeto VARCHAR(50),
+    local VARCHAR(50),
+    dsprojeto VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Equipamento (
+    cdequipamento INT PRIMARY KEY,
+    preco MONEY,
+    n_serie CHAR(10),
+    dsequipamento VARCHAR(50) NOT NULL,
+    fkprojeto INT,
+    FOREIGN KEY (fkprojeto) REFERENCES Projeto(cdprojeto)
+);
+
+CREATE TABLE Pesquisador (
+    cdpesquisador INT PRIMARY KEY,
+    nmpesquisador VARCHAR(50),
+    rg CHAR(10),
+    endereco VARCHAR(50),
+    fkprojeto INT,
+    FOREIGN KEY (fkprojeto) REFERENCES Projeto(cdprojeto)
+);
+
+CREATE TABLE Computador (
+    cdcomputador INT PRIMARY KEY,
+    placas VARCHAR(50),
+    processador VARCHAR(50),
+    memoria VARCHAR(50),
+    fkpesquisador INT,
+    fkequipamento INT,
+    FOREIGN KEY (fkpesquisador) REFERENCES Pesquisador(cdpesquisador),
+    FOREIGN KEY (fkequipamento) REFERENCES Equipamento(cdequipamento)
+);
+
+CREATE TABLE Impressora(
+  	cdimpressora INT PRIMARY KEY,
+  	tipo VARCHAR(50),
+  	fkpesquisador INT REFERENCES pesquisador(cdpesquisador),
+  	fkequipamento INT REFERENCES equipamento(cdequipamento)
+);
+
+
+Scripts para inserção de 5 registros em cada tabela.
+
+INSERT INTO Projeto (cdprojeto, nmprojeto, local, dsprojeto)
+VALUES 
+
+(1, 'Projeto A', 'Local A', 'Descrição A'),
+(2, 'Projeto B', 'Local B', 'Descrição B'),
+(3, 'Projeto C', 'Local C', 'Descrição C'),
+(4, 'Projeto D', 'Local D', 'Descrição D'),
+(5, 'Projeto E', 'Local E', 'Descrição E');
+
+
+INSERT INTO Equipamento (cdequipamento, preco, n_serie, dsequipamento, fkprojeto)
+VALUES 
+
+(1, 1000.00, '1234567890', 'Equipamento A', 1),
+(2, 1500.00, '0987654321', 'Equipamento B', 2),
+(3, 800.00, '5678901234', 'Equipamento C', 3),
+(4, 2000.00, '6789012345', 'Equipamento D', 4),
+(5, 1200.00, '3456789012', 'Equipamento E', 5);
+
+
+INSERT INTO Pesquisador (cdpesquisador, nmpesquisador, rg, endereco, fkprojeto)
+VALUES 
+
+(1, 'Pesquisador A', '1234567890', 'Endereço A', 1),
+(2, 'Pesquisador B', '0987654321', 'Endereço B', 2),
+(3, 'Pesquisador C', '5678901234', 'Endereço C', 3),
+(4, 'Pesquisador D', '6789012345', 'Endereço D', 4),
+(5, 'Pesquisador E', '3456789012', 'Endereço E', 5);
+
+
+INSERT INTO Computador (cdcomputador, placas, processador, memoria, fkpesquisador, fkequipamento)
+VALUES 
+
+(1, 'Placa A', 'Processador A', '8GB', 1, 1),
+(2, 'Placa B', 'Processador B', '16GB', 2, 2),
+(3, 'Placa C', 'Processador C', '4GB', 3, 3),
+(4, 'Placa D', 'Processador D', '32GB', 4, 4),
+(5, 'Placa E', 'Processador E', '64GB', 5, 5);
+
+
+INSERT INTO Impressora (cdimpressora, tipo, fkpesquisador, fkequipamento)
+VALUES
+ 
+(1, 'Tipo A', 1, 1),
+(2, 'Tipo B', 2, 2),
+(3, 'Tipo C', 3, 3),
+(4, 'Tipo D', 4, 4),
+(5, 'Tipo E', 5, 5);
