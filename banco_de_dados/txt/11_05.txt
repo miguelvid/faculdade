@@ -1,0 +1,39 @@
+CREATE TABLE pessoa (
+  cdpessoa INT PRIMARY KEY,
+  nmpessoa VARCHAR (50) NOT NULL
+);
+
+CREATE TABLE medicamento (
+  cdmedicamento INT PRIMARY KEY,
+  nmmedicamento VARCHAR (50) NOT NULL
+);
+
+CREATE TABLE medico (
+  cdmedico INT PRIMARY KEY,
+  registro CHAR (10) NOT NULL UNIQUE,
+  FOREIGN KEY (cdmedico) REFERENCES pessoa (cdpessoa)
+);
+
+CREATE TABLE paciente (
+  cdpaciente INT PRIMARY KEY,
+  convenio BOOLEAN NOT NULL,
+  FOREIGN KEY (cdpaciente) REFERENCES pessoa (cdpessoa)
+);
+
+CREATE TABLE consulta (
+  cdconsulta SERIAL PRIMARY KEY,
+  cdmedico INT NOT NULL,
+  cdpaciente INT NOT NULL,
+  dtconsulta DATE NOT NULL,
+  UNIQUE (cdmedico, cdpaciente, dtconsulta)
+  );
+
+ALTER TABLE consulta
+ALTER COLUMN dtconsulta TYPE TIMESTAMP;
+
+CREATE TABLE prescreve (
+  cdconsulta INT NOT NULL REFERENCES consulta (cdconsulta),
+  cdmedicamento INT NOT NULL REFERENCES medicamento (cdmedicamento),
+  dosagem VARCHAR (100),
+  PRIMARY KEY (cdconsulta, cdmedicamento)
+  );

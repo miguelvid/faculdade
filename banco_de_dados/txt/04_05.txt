@@ -1,0 +1,86 @@
+a) implementação da base de dados em anexo:
+
+create table cliente (
+  cd_cliente smallint PRIMARY KEY,
+  nome varchar(35),
+  endereco varchar(30),
+  telefone char(11),
+  e_mail varchar(100),
+  data_nasc date
+ );
+ 
+create table distribuidor (
+  cd_distribuidor smallint PRIMARY KEY,
+  nome_fantasia varchar(35),
+  razao_social varchar(30),
+  telefone char(10),
+  e_mail varchar(100)
+);
+ 
+create table venda (
+ cd_venda smallint primary key,
+ fk_cliente smallint references cliente (cd_cliente),
+ total decimal(15,2),
+ data date,
+ hora time
+);
+   
+create table produto (
+ cd_produto smallint primary Key,
+ fk_distribuidor smallint references distribuidor (cd_distribuidor),
+ descricao varchar(60),
+ preco_venda decimal(15,2),
+ preco_custo decimal (15,2),
+ estoque smallint,
+ data_validade date
+);
+    
+create table itens_venda (
+ fk_venda smallint references venda (cd_venda),
+ fk_produto smallint references produto (cd_produto),
+ quantidade smallint,
+ sub_total decimal(15,2),
+ PRIMARY KEY (fk_venda, fk_produto)
+);
+
+b) para inserção de pelo menos 5 registros em cada tabela:
+
+INSERT INTO cliente (cd_cliente, nome, endereco, telefone, e_mail, data_nasc)
+VALUES
+    (1, 'João', 'Rua A, 123', '1234567890', 'joao@.com', '1990-05-15'),
+    (2, 'Maria', 'Avenida B, 456', '9876543210', 'maria@.com', '1985-10-20'),
+    (3, 'Carlos', 'Rua C, 789', '9999999999', 'carlos@.com', '1988-07-08'),
+    (4, 'Ana', 'Rua D, 321', '8888888888', 'ana@.com', '1992-12-30'),
+    (5, 'Pedr', 'Avenida E, 654', '7777777777', 'pedro@.com', '1995-03-25');
+
+INSERT INTO distribuidor (cd_distribuidor, nome_fantasia, razao_social, telefone, e_mail)
+VALUES
+    (1, 'Distribuidora A', 'Alpha Ltda.', '1111111111', 'a@.com'),
+    (2, 'Distribuidora B', 'Beta S.A.', '2222222222', 'b@.com'),
+    (3, 'Distribuidora G', 'Gamma Distribuidora', '3333333333', 'g@.com'),
+    (4, 'Distribuidora D', 'Delta Comércio', '4444444444', 'd@.com'),
+    (5, 'Distribuidora E', 'Epsilon Ltda.', '5555555555', 'en@.com');
+
+INSERT INTO venda (cd_venda, fk_cliente, total, data, hora)
+VALUES
+    (1, 1, 150.00, '2024-05-01', '12:30:00'),
+    (2, 2, 200.50, '2024-05-02', '15:45:00'),
+    (3, 3, 75.25, '2024-05-03', '10:00:00'),
+    (4, 4, 300.75, '2024-05-04', '14:20:00'),
+    (5, 5, 100.20, '2024-05-05', '11:55:00');
+
+INSERT INTO produto (cd_produto, fk_distribuidor, descricao, preco_venda, preco_custo, estoque, data_validade)
+VALUES
+    (1, 1, 'Produto A', 50.00, 30.00, 100, '2024-12-31'),
+    (2, 2, 'Produto B', 20.50, 10.00, 150, '2025-06-30'),
+    (3, 3, 'Produto C', 12.75, 8.00, 80, '2024-09-15'),
+    (4, 4, 'Produto D', 75.25, 50.00, 200, '2025-03-20'),
+    (5, 5, 'Produto E', 30.10, 20.00, 120, '2024-10-10');
+
+INSERT INTO itens_venda (fk_venda, fk_produto, quantidade, sub_total)
+VALUES
+    (1, 1, 2, 100.00),
+    (1, 3, 1, 12.75),
+    (2, 2, 5, 102.50),
+    (3, 4, 3, 225.75),
+    (4, 5, 4, 120.40);

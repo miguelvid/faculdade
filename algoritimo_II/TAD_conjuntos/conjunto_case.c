@@ -125,10 +125,10 @@ int main() {
                 }
                 break;
             case 5:
-                printf("Informe o 1o conjunto para a interseccao: ");
+                printf("Informe o 1  conjunto para a interseccao: ");
                 int conjunto1, conjunto2;
                 scanf("%d", &conjunto1);
-                printf("Informe o 2o conjunto para a interseccao: ");
+                printf("Informe o 2 conjunto para a interseccao: ");
                 scanf("%d", &conjunto2);
                 if (conjunto1 > 0 && conjunto1 <= MAX_CONJUNTOS && conjunto2 > 0 && conjunto2 <= MAX_CONJUNTOS) {
                     interseccao(&conjuntos[conjunto1], &conjuntos[conjunto2]);
