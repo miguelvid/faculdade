@@ -174,7 +174,7 @@ int listavazia (Lista *lista) {
 
 
 //-------------------------Funções especiais------------------------------
-// Inverte conteudo da Lista
+    // Inverte conteudo da Lista
     void inverteLista (Lista *lista) {
         No *anterior = NULL;
         No *atual = lista->inicio;
