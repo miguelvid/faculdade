@@ -8,7 +8,8 @@ class Vertice:
     
     def add_vizinho(self, vizinho: object, peso: int):
         self.vizinhos.append(tuple((vizinho, peso)))
-
+    
+    #8
     def get_grau(self) -> int:
         return len(self.vizinhos)
 

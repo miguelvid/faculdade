@@ -173,23 +173,61 @@ def menu():
 
         elif opcao == "13":
             limpar_terminal()
-            grafo.existe_caminho_entre_vertices()
+            v1 = int(input("Digite o valor do vértice de origem (exemplo: 1): "))
+            v2 = int(input("Digite o valor do vértice de destino (exemplo: 2): "))
+            existe = grafo.existe_caminho_entre_vertices(v1, v2)
+            if existe == 1:
+                print("Existe caminho entre os vértices")
+            elif existe == 0:
+                print("Não existe caminho entre os vértices")
+            elif existe == -1:
+                print("Vértices não encontrados")
 
         elif opcao == "14":
             limpar_terminal()
-            grafo.is_ciclo()
+            v1 = int(input("Digite o valor do vértice de origem (exemplo: 1): "))
+            v2 = int(input("Digite o valor do vértice de destino (exemplo: 2): "))
+            is_ciclo = grafo.is_caminho_ciclo(v1,v2)
+            if is_ciclo == 1:
+                print("O caminho entre os vértices é um ciclo")
+            elif is_ciclo == 0:
+                print("O caminho entre os vértices NÃO é um ciclo")
+            elif is_ciclo == -1:
+                print("Vértices não encontrados")
 
         elif opcao == "15":
             limpar_terminal()
-            grafo.get_vizinhos_vertice()
+            v = int(input("Digite o valor do vértice (exemplo: 1): "))
+            vizinhos = grafo.get_vizinhos_vertice(v)
+            print(f"Vizinhos do vértice {v}: (Vizinho, Peso)")
+            if len(vizinhos) > 0:
+                for vizinho in vizinhos:
+                    print(f"({vizinho[0].valor}, {vizinho[1]})")
+            elif vizinhos is None:
+                print("Vértice não encontrado")
+            else:
+                print("Vértice não possui vizinhos")
         
         elif opcao == "16":
             limpar_terminal()
-            grafo.is_conexo()
+            is_conexo = grafo.is_conexo()
+            if is_conexo == 1:
+                print("Grafo é conexo")
+            elif is_conexo == 0:
+                print("Grafo não é conexo")
+            else:
+                print("Grafo vazio")
+
 
         elif opcao == "17":
             limpar_terminal()
-            grafo.get_vertices_isolados()
+            vertices_isolados = grafo.get_vertices_isolados()
+            print("Vértices isolados:")
+            if vertices_isolados:
+                for vertice in vertices_isolados:
+                    print(vertice)
+            else:
+                print("Nenhum vértice isolado")
             
             
                 

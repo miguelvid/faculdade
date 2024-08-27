@@ -14,8 +14,11 @@ class Grafo:
         
         return [vertice for vertice in self.vertices]
     
-    def get_vizinhos_vertice(self) -> list:
-        pass
+    def get_vizinhos_vertice(self, v: int) -> list:
+        vertice = self.get_vertice(v)
+        if vertice:
+            return vertice.get_vizinhos()
+        return None
     
     def get_arestas(self) -> list:
         arestas = []
@@ -28,7 +31,7 @@ class Grafo:
             return arestas
         else:
             return None
-
+    #9
     def get_grau_vertices(self) -> list:
         vertices_grau = {}
         if self.vertices:
@@ -38,22 +41,36 @@ class Grafo:
             return vertices_grau
         else:
             return None
-    
-    def get_vertices_isolados(self) -> list:
-        pass
-
+    #10
     def get_min_max_grau(self) -> tuple:
         if self.vertices:
             graus = [vertice.get_grau() for vertice in self.vertices]
             return (max(graus), min(graus))
         else:
             return None
+        
+    def get_vertices_isolados(self) -> list:
+        vertices_isolados = []
+        if not self.get_vertices():
+            return -1
+        for vertice in self.vertices:
+            if not vertice.get_vizinhos():
+                vertices_isolados.append(vertice.valor)
+        if vertices_isolados:
+            return vertices_isolados
+        else:
+            return None
 
     def add_vertice(self, valor: int):
+        if valor is None:
+            return
+        
         novo_vertice = Vertice(valor)
         self.vertices.append(novo_vertice)
 
     def add_aresta(self, origem: int, destino: int, peso: int) -> bool:
+        if (destino or origem or peso) is None:
+            return False
         
         vertice_origem = self.get_vertice(origem)
         vertice_destino = self.get_vertice(destino)
@@ -98,8 +115,11 @@ class Grafo:
     def reiniciar_grafo(self) -> int:
         self.vertices = []
         return 1
-
+    #11
     def are_vizinhos(self, v1: int, v2: int) -> int:
+        if (v1 or v2) is None:
+            return -1
+
         vertice1 = self.get_vertice(v1)
         vertice2 = self.get_vertice(v2)
 
@@ -110,7 +130,7 @@ class Grafo:
                 return 1
         return 0
         
-
+    #12
     def is_multigrafo(self) -> int:
         lista_adjacencia = self.lista_adjacencia()
         incidencia_vizinhos = {}
@@ -131,12 +151,91 @@ class Grafo:
                     incidencia_vizinhos[vertice].add(vizinho)
         return 0
         
+    def __existe_caminho_entre_vertices(self, v1: Vertice, v2: Vertice, visitados: set) -> int:
 
-    def existe_caminho_entre_vertices(self) -> bool:
-        pass
+        for vizinho, _ in v1.get_vizinhos():
+            if vizinho not in visitados:
+                visitados.add(vizinho)
+                if vizinho == v2:
+                    return 1
+                elif self.__existe_caminho_entre_vertices(vizinho, v2, visitados) == 1:
+                    return 1
+        return 0
 
-    def is_ciclo(self) -> bool:
-        pass
 
-    def is_conexo(self) -> bool:
-        pass
+    def existe_caminho_entre_vertices(self, v1: int, v2: int) -> int:
+        if (v1 or v2) is None:
+            return -1
+
+        v1 = self.get_vertice(v1)
+        v2 = self.get_vertice(v2)
+
+        if not (v1 and v2):
+            return -1
+        elif v1 == v2:
+            return 1
+        else:
+            visitados = set()
+            visitados.add(v1)
+            return self.__existe_caminho_entre_vertices(v1, v2, visitados)
+
+    def __is_caminho_ciclo(self, v1: Vertice, v2: Vertice, visitados: set, origem: Vertice) -> int:
+        
+        if v1 == v2 and len(visitados) > 1:
+            for vizinho, _ in v2.get_vizinhos():
+                if vizinho == origem:
+                    return 1  
+            return 0
+        
+        for vizinho, _ in v1.get_vizinhos():
+            
+            if vizinho not in visitados or (vizinho == origem and len(visitados) == len(self.get_vertices())):
+                if vizinho == origem and v1 != v2:
+                    continue
+                
+                visitados.add(vizinho)  
+                
+                if self.__is_caminho_ciclo(vizinho, v2, visitados, origem) == 1:
+                    return 1  
+                
+                visitados.remove(vizinho)  
+        
+        return 0  
+    
+    def is_caminho_ciclo(self, v1: int, v2: int) -> int:
+        if (v1 or v2) is None:
+            return -1
+
+        v1 = self.get_vertice(v1)
+        v2 = self.get_vertice(v2)
+
+        if not (v1 and v2):
+            return -1
+        elif v1 == v2:
+            return 1
+        else:
+            visitados = set()
+            visitados.add(v1)
+            return self.__is_caminho_ciclo(v1, v2, visitados, v1)
+
+    
+
+    def is_conexo(self) -> int:
+        def dfs(vertice):
+            if vertice not in visitados:
+                visitados.add(vertice)
+                for vizinho, _ in vertice.get_vizinhos():
+                    dfs(vizinho)
+
+        vertices = self.get_vertices()
+        if not vertices:
+            return -1 
+        
+        visitados = set()
+        
+        primeiro_vertice = vertices[0]
+        dfs(primeiro_vertice)
+
+        return 1 if len(visitados) == len(vertices) else 0
+            
+
