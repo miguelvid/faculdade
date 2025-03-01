@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU05: Consultar Status do Pagamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CU05: Consultar Status do Pagamento</h1>
+    <p><strong>Identificador:</strong> CU05</p>
+    <p><strong>Título:</strong> Consultar Status do Pagamento</p>
+    <p><strong>Ator(es):</strong> Passageiro</p>
+    <p><strong>Descrição:</strong> Este caso de uso permite ao passageiro verificar o status do pagamento de uma passagem previamente adquirida.</p>
+
+    <h2>Pré-condições</h2>
+    <ul>
+        <li>O passageiro deve estar autenticado no sistema.</li>
+        <li>A passagem deve ter sido comprada previamente.</li>
+    </ul>
+
+    <h2>Pós-condições</h2>
+    <ul>
+        <li>O sistema exibe o status atual do pagamento (aprovado, pendente, recusado).</li>
+    </ul>
+
+    <h2>Fluxo de Eventos</h2>
+    <ol>
+        <li>O passageiro acessa a página de "Minhas Passagens".</li>
+        <li>O passageiro seleciona a passagem desejada.</li>
+        <li>O sistema exibe o status atual do pagamento.</li>
+        <li>O passageiro pode tomar uma ação dependendo do status (por exemplo, tentar um novo pagamento se for recusado).</li>
+    </ol>
+
+    <h2>Requisitos Especiais</h2>
+    <ul>
+        <li>O sistema deve garantir a precisão das informações exibidas sobre o status do pagamento.</li>
+    </ul>
+
+    <h2>Cenários Alternativos</h2>
+    <ul>
+        <li>Se o pagamento for recusado, o sistema exibe uma mensagem explicando o motivo e permite que o passageiro tente novamente.</li>
+    </ul>
+
+    <a href="index.html">Voltar para a página principal</a>
+</body>
+</html>

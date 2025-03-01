@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU02: Cancelar Passagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CU02: Cancelar Passagem</h1>
+    <p><strong>Identificador:</strong> CU02</p>
+    <p><strong>Título:</strong> Cancelar Passagem</p>
+    <p><strong>Ator(es):</strong> Passageiro</p>
+    <p><strong>Descrição:</strong> Este caso de uso permite ao passageiro cancelar uma passagem previamente comprada, com base nas regras de política de cancelamento da empresa.</p>
+
+    <h2>Pré-condições</h2>
+    <ul>
+        <li>O passageiro deve estar autenticado no sistema.</li>
+        <li>A passagem a ser cancelada deve ser válida (dentro do prazo de cancelamento).</li>
+    </ul>
+
+    <h2>Pós-condições</h2>
+    <ul>
+        <li>A passagem é cancelada no sistema.</li>
+        <li>O reembolso (se aplicável) é processado.</li>
+    </ul>
+
+    <h2>Fluxo de Eventos</h2>
+    <ol>
+        <li>O passageiro acessa a página "Minhas Passagens".</li>
+        <li>O passageiro escolhe a passagem que deseja cancelar.</li>
+        <li>O sistema verifica se o cancelamento é permitido.</li>
+        <li>O passageiro confirma o cancelamento.</li>
+        <li>O sistema processa o cancelamento e reembolso, se aplicável.</li>
+        <li>O passageiro recebe uma notificação de cancelamento.</li>
+    </ol>
+
+    <h2>Requisitos Especiais</h2>
+    <ul>
+        <li>O sistema deve validar a política de cancelamento antes de proceder.</li>
+        <li>O sistema deve garantir que o reembolso seja processado de acordo com as regras financeiras da empresa.</li>
+    </ul>
+
+    <h2>Cenários Alternativos</h2>
+    <ul>
+        <li>Se a política de cancelamento não permitir o cancelamento, o sistema exibe uma mensagem informando o motivo.</li>
+    </ul>
+
+    <a href="index.html">Voltar para a página principal</a>
+</body>
+</html>

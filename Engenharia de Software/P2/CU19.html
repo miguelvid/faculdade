@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU19: Excluir Viagem Agendada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CU19: Excluir Viagem Agendada</h1>
+    <p><strong>Identificador:</strong> CU19</p>
+    <p><strong>Título:</strong> Excluir Viagem Agendada</p>
+    <p><strong>Ator(es):</strong> Administrador</p>
+    <p><strong>Descrição:</strong> Este caso de uso permite ao administrador excluir uma viagem previamente agendada no sistema, removendo-a completamente.</p>
+
+    <h2>Pré-condições</h2>
+    <ul>
+        <li>O administrador deve estar autenticado no sistema.</li>
+        <li>A viagem deve estar agendada e não ter sido realizada ainda.</li>
+    </ul>
+
+    <h2>Pós-condições</h2>
+    <ul>
+        <li>O sistema exclui a viagem do banco de dados.</li>
+    </ul>
+
+    <h2>Fluxo de Eventos</h2>
+    <ol>
+        <li>O administrador acessa a página de gerenciamento de viagens.</li>
+        <li>O administrador seleciona a viagem a ser excluída.</li>
+        <li>O administrador confirma a exclusão da viagem.</li>
+        <li>O sistema valida e exclui a viagem do banco de dados.</li>
+    </ol>
+
+    <h2>Requisitos Especiais</h2>
+    <ul>
+        <li>O sistema deve garantir que apenas administradores possam excluir viagens.</li>
+    </ul>
+
+    <h2>Cenários Alternativos</h2>
+    <ul>
+        <li>Se a viagem já foi realizada ou está em andamento, o sistema exibe uma mensagem de erro e não permite a exclusão.</li>
+    </ul>
+
+    <a href="index.html">Voltar para a página principal</a>
+</body>
+</html>

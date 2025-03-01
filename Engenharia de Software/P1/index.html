@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRS - SGBUS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">SGBUS - SRS</div>
+        <ul>
+            <li><a href="#" class="active" onclick="loadContent('home')">Início</a></li>
+            <li><a href="#" onclick="loadContent('introducao')">1. Introdução</a></li>
+            <li><a href="#" onclick="loadContent('descricao-geral')">2. Descrição Geral</a></li>
+            <li><a href="#" onclick="loadContent('requisitos')">3. Requisitos Específicos</a></li>
+            <li><a href="#" onclick="loadContent('suporte')">4. Informações de Suporte</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+    </main>
+
+    <script>
+        const pages = {
+            home: `
+                <div class="container">
+                    <h1>Especificação de Requisitos de Software (SRS)</h1>
+                    <div class="content-section">
+                        <h2>Sistema de Gerenciamento de Transportes Rodoviários</h2>
+                        <p>Bem-vindo à documentação do SGBUS. Este documento detalha os requisitos e especificações do sistema.</p>
+                        <p>Selecione uma seção no menu lateral para visualizar os detalhes.</p>
+                    </div>
+                </div>
+            `,
+            introducao: `
+                <div class="container">
+                    <h1>1. Introdução</h1>
+                    <div class="content-section">
+                        <h3>1.1 Propósito</h3>
+                        <p>Este documento especifica os requisitos de software para o Sistema de Gerenciamento de Transportes Rodoviários (SGBUS). Destina-se a ser utilizado pela equipe de desenvolvimento e stakeholders do projeto.</p>
+
+                        <h3>1.2 Escopo</h3>
+                        <p>O SGBUS é um sistema que permitirá o gerenciamento completo de operações de empresas de transporte rodoviário, incluindo venda de passagens, gestão de frota, controle de rotas e administração de pessoal.</p>
+
+                        <h3>1.3 Definições, Acrônimos e Abreviações</h3>
+                        <ul>
+                            <li>SGBUS: Sistema de Gerenciamento de Transportes Rodoviários</li>
+                            <li>ANTT: Agência Nacional de Transportes Terrestres</li>
+                            <li>SLA: Service Level Agreement</li>
+                            <li>API: Application Programming Interface</li>
+                            <li>CRUD: Create, Read, Update, Delete</li>
+                        </ul>
+
+                        <h3>1.4 Referências</h3>
+                        <ul>
+                            <li>IEEE Std 830-1998</li>
+                            <li>Regulamentação ANTT Nº 4.770/2015</li>
+                            <li>LGPD - Lei nº 13.709/2018</li>
+                        </ul>
+
+                        <h3>1.5 Visão Gera</h3>
+                        
+                        <ul>
+                            <li>IEEE Std 830-1998</li>
+                            <li>Regulamentação ANTT Nº 4.770/2015</li>
+                            <li>LGPD - Lei nº 13.709/2018</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            'descricao-geral': `
+                <div class="container">
+                    <h1>2. Descrição Geral</h1>
+                    <div class="content-section">
+                        <h3>2.1 Perspectiva do Produto</h3>
+                        <p>O SGBUS é um sistema independente que se integrará com:</p>
+                        <ul>
+                            <li>Sistemas de pagamento online</li>
+                            <li>APIs de geolocalização</li>
+                            <li>Sistemas governamentais</li>
+                            <li>Sistemas de gestão empresarial (ERP)</li>
+                        </ul>
+
+                        <h3>2.2 Funções do Produto</h3>
+                        <div class="requirements">
+                            <div class="requirement-item">
+                                <h4>Gestão de Passagens</h4>
+                                <ul>
+                                    <li>Venda online</li>
+                                    <li>Reservas</li>
+                                    <li>Cancelamentos</li>
+                                    <li>Reembolsos</li>
+                                </ul>
+                            </div>
+                            <div class="requirement-item">
+                                <h4>Gestão de Frota</h4>
+                                <ul>
+                                    <li>Cadastro de veículos</li>
+                                    <li>Controle de manutenção</li>
+                                    <li>Monitoramento em tempo real</li>
+                                    <li>Gestão de combustível</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>2.3 Características dos Usuários</h3>
+                        <div class="requirements">
+                            <div class="requirement-item">
+                                <h4>Passageiros</h4>
+                                <ul>
+                                    <li>Perfil: Usuários finais</li>
+                                    <li>Nível técnico: Básico</li>
+                                    <li>Privilégios: Acesso limitado</li>
+                                </ul>
+                            </div>
+                            <div class="requirement-item">
+                                <h4>Administradores</h4>
+                                <ul>
+                                    <li>Perfil: Gestores do sistema</li>
+                                    <li>Nível técnico: Avançado</li>
+                                    <li>Privilégios: Acesso total</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            requisitos: `
+                <div class="container">
+                    <h1>3. Requisitos Específicos</h1>
+                    <div class="content-section">
+                        <h3>3.1 Requisitos de Interface Externa</h3>
+                        <div class="requirements">
+                            <div class="requirement-item">
+                                <h4>Interfaces do Usuário</h4>
+                                <ul>
+                                    <li>RF1.1: Tela de busca de viagens</li>
+                                    <li>RF1.2: Sistema de compra de passagens</li>
+                                    <li>RF1.3: Área do cliente</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>3.2 Requisitos Não Funcionais</h3>
+                        <div class="requirements">
+                            <div class="requirement-item">
+                                <h4>Desempenho</h4>
+                                <ul>
+                                    <li>RNF1: Tempo de resposta máximo de 3 segundos</li>
+                                    <li>RNF2: Suporte a 5.000 usuários simultâneos</li>
+                                    <li>RNF3: Disponibilidade de 99,9%</li>
+                                </ul>
+                            </div>
+                            <div class="requirement-item">
+                                <h4>Segurança</h4>
+                                <ul>
+                                    <li>RNF4: Criptografia de dados sensíveis</li>
+                                    <li>RNF5: Autenticação em duas etapas</li>
+                                    <li>RNF6: Registro de todas as operações</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            suporte: `
+                <div class="container">
+                    <h1>4. Informações de Suporte</h1>
+                    <div class="content-section">
+                        <h3>4.1 Apêndices</h3>
+                        <ul>
+                            <li>A: Diagramas de caso de uso</li>
+                            <li>B: Modelos de dados</li>
+                            <li>C:  Diagrama de Arquitetura do Sistema</li>
+                            <img src="img/arquitetura.png" alt="Logo SGBUS" style="width: 900px; height: auto;">
+                        </ul>
+                    </div>
+                </div>
+            `
+        };
+
+        function loadContent(page) {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = pages[page];
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`nav a[onclick="loadContent('${page}')"]`).classList.add('active');
+        }
+
+        loadContent('home');
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU16: Atualizar Status do Veículo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CU16: Atualizar Status do Veículo</h1>
+    <p><strong>Identificador:</strong> CU16</p>
+    <p><strong>Título:</strong> Atualizar Status do Veículo</p>
+    <p><strong>Ator(es):</strong> Administrador</p>
+    <p><strong>Descrição:</strong> Este caso de uso permite ao administrador atualizar o status de um veículo, como se está em manutenção, disponível ou fora de operação.</p>
+
+    <h2>Pré-condições</h2>
+    <ul>
+        <li>O administrador deve estar autenticado no sistema.</li>
+    </ul>
+
+    <h2>Pós-condições</h2>
+    <ul>
+        <li>O status do veículo é atualizado no sistema.</li>
+    </ul>
+
+    <h2>Fluxo de Eventos</h2>
+    <ol>
+        <li>O administrador acessa a página de gerenciamento de veículos.</li>
+        <li>O administrador escolhe o veículo que deseja atualizar.</li>
+        <li>O administrador altera o status do veículo.</li>
+        <li>O sistema valida e confirma a alteração.</li>
+        <li>O sistema atualiza o banco de dados com o novo status.</li>
+    </ol>
+
+    <h2>Requisitos Especiais</h2>
+    <ul>
+        <li>O sistema deve garantir que apenas administradores possam acessar essa funcionalidade.</li>
+    </ul>
+
+    <h2>Cenários Alternativos</h2>
+    <ul>
+        <li>Se o status do veículo não for válido (exemplo: status inconsistente), o sistema exibe uma mensagem de erro.</li>
+    </ul>
+
+    <a href="index.html">Voltar para a página principal</a>
+</body>
+</html>

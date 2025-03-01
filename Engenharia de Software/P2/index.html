@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especificação de Requisitos de Software - SGBUS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Especificação de Requisitos de Software (SRS)</h1>
+    <h2>Sistema de Gerenciamento de Transportes Rodoviários (SGBUS)</h2>
+
+    <div class="toc">
+        <h2>Índice</h2>
+        <ol>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#descricao-geral">Descrição Geral</a></li>
+            <li><a href="#requisitos-especificos">Requisitos Específicos</a></li>
+            <li><a href="#casos-de-uso">Casos de Uso</a></li>
+            <li><a href="#informacoes-suporte">Informações de Suporte</a></li>
+        </ol>
+    </div>
+
+    <div id="introducao" class="section">
+        <h2>1. Introdução</h2>
+
+        <div class="subsection">
+            <h3>1.1 Propósito</h3>
+            <p>Este documento especifica os requisitos de software para o Sistema de Gerenciamento de Transportes Rodoviários (SGBUS). Destina-se a ser utilizado pela equipe de desenvolvimento e stakeholders do projeto.</p>
+        </div>
+
+        <div class="subsection">
+            <h3>1.2 Escopo</h3>
+            <p>O SGBUS é um sistema que permitirá o gerenciamento completo de operações de empresas de transporte rodoviário, incluindo venda de passagens, gestão de frota, controle de rotas e administração de pessoal.</p>
+        </div>
+
+        <div class="subsection">
+            <h3>1.3 Definições, Acrônimos e Abreviações</h3>
+            <ul>
+                <li>SGBUS: Sistema de Gerenciamento de Transportes Rodoviários</li>
+                <li>ANTT: Agência Nacional de Transportes Terrestres</li>
+                <li>SLA: Service Level Agreement (Acordo de Nível de Serviço)</li>
+                <li>API: Application Programming Interface</li>
+                <li>CRUD: Create, Read, Update, Delete</li>
+            </ul>
+        </div>
+
+        <div class="subsection">
+            <h3>1.4 Referências</h3>
+            <ol>
+                <li>IEEE Std 830-1998 - IEEE Recommended Practice for Software Requirements Specifications</li>
+                <li>Regulamentação ANTT Nº 4.770/2015 - Transporte Rodoviário Interestadual</li>
+                <li>Lei Geral de Proteção de Dados (LGPD) - Lei nº 13.709/2018</li>
+            </ol>
+        </div>
+
+        <div class="subsection">
+            <h3>1.5 Visão Geral</h3>
+            <p>Este documento está organizado em quatro seções principais:</p>
+            <ul>
+                <li>Introdução: fornece uma visão geral do documento</li>
+                <li>Descrição Geral: descreve os fatores gerais que afetam o produto e seus requisitos</li>
+                <li>Requisitos Específicos: define os requisitos detalhados do sistema</li>
+                <li>Casos de Uso</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="descricao-geral" class="section">
+        <h2>2. Descrição Geral</h2>
+
+        <div class="subsection">
+            <h3>2.1 Perspectiva do Produto</h3>
+            <p>O SGBUS é um sistema independente que se integrará com:</p>
+            <ul>
+                <li>Sistemas de pagamento online</li>
+                <li>APIs de geolocalização</li>
+                <li>Sistemas governamentais de controle de transporte</li>
+                <li>Sistemas de gestão empresarial (ERP)</li>
+            </ul>
+        </div>
+
+        <div class="subsection">
+            <h3>2.2 Funções do Produto</h3>
+            <ul>
+                <li>Gestão de Passagens: Venda online, Reservas, Cancelamentos, Reembolsos</li>
+                <li>Gestão de Frota: Cadastro de veículos, Controle de manutenção, Monitoramento em tempo real, Gestão de combustível</li>
+                <li>Gestão de Pessoal: Escalas de motoristas, Controle de jornada, Gestão de documentação</li>
+                <li>Gestão de Rotas: Planejamento de itinerários, Controle de horários, Gestão de paradas</li>
+                <li>Relatórios e Analytics: Relatórios operacionais, Indicadores financeiros, Análises de desempenho</li>
+            </ul>
+        </div>
+
+        <div class="subsection">
+            <h3>2.3 Características dos Usuários</h3>
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Perfil</th>
+                    <th>Nível Técnico</th>
+                    <th>Privilégios</th>
+                </tr>
+                <tr>
+                    <td>Passageiros</td>
+                    <td>Usuários finais do serviço de transporte</td>
+                    <td>Básico</td>
+                    <td>Acesso limitado a funções de compra e consulta</td>
+                </tr>
+                <tr>
+                    <td>Motoristas</td>
+                    <td>Profissionais de transporte</td>
+                    <td>Intermediário</td>
+                    <td>Acesso a funções operacionais específicas</td>
+                </tr>
+                <tr>
+                    <td>Administradores</td>
+                    <td>Gestores do sistema</td>
+                    <td>Avançado</td>
+                    <td>Acesso total ao sistema</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="subsection">
+            <h3>2.4 Restrições</h3>
+            <ul>
+                <li>Conformidade com regulamentações da ANTT</li>
+                <li>Adequação à LGPD</li>
+                <li>Normas de segurança digital</li>
+            </ul>
+        </div>
+        
+        <div id="requisitos-especificos" class="section">
+            <h2>3. Requisitos Específicos</h2>
+
+            <div class="subsection">
+                <h3>3.1 Requisitos de Interface Externa</h3>
+
+                <div class="subsubsection">
+                    <h4>3.1.1 Interfaces do Usuário</h4>
+                    <ul>
+                        <li>Interface Web (Passageiros)
+                            <ul>
+                                <li>RF1.1: Tela de busca de viagens</li>
+                                <li>RF1.2: Sistema de compra de passagens</li>
+                                <li>RF1.3: Área do cliente</li>
+                            </ul>
+                        </li>
+                        <li>Aplicativo Móvel (Motoristas)
+                            <ul>
+                                <li>RF2.1: Visualização de rotas</li>
+                                <li>RF2.2: Registro de ocorrências</li>
+                                <li>RF2.3: Controle de viagem</li>
+                            </ul>
+                        </li>
+                        <li>Sistema Administrativo
+                            <ul>
+                                <li>RF3.1: Dashboard gerencial</li>
+                                <li>RF3.2: Gestão de usuários</li>
+                                <li>RF3.3: Configurações do sistema</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="subsubsection">
+                    <h4>3.1.2 Interfaces de Hardware</h4>
+                    <ul>
+                        <li>Dispositivos de Rastreamento
+                            <ul>
+                                <li>RH1.1: Integração com GPS</li>
+                                <li>RH1.2: Monitoramento de telemetria</li>
+                            </ul>
+                        </li>
+                        <li>Equipamentos de Venda
+                            <ul>
+                                <li>RH2.1: Impressoras térmicas</li>
+                                <li>RH2.2: Leitores de cartão</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="subsubsection">
+                    <h4>3.1.3 Interfaces de Software</h4>
+                    <ul>
+                        <li>Integrações Externas
+                            <ul>
+                                <li>RS1.1: APIs de pagamento</li>
+                                <li>RS1.2: Serviços de mapas</li>
+                                <li>RS1.3: Sistemas governamentais</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>3.2 Requisitos Funcionais</h3>
+
+                <div class="subsubsection">
+                    <h4>3.2.1 Gestão de Passagens</h4>
+                    <ul>
+                        <li>RF4: O sistema deve permitir a compra de passagens online
+                            <ul>
+                                <li>RF4.1: Seleção de origem e destino</li>
+                                <li>RF4.2: Escolha de data e horário</li>
+                                <li>RF4.3: Seleção de assento</li>
+                                <li>RF4.4: Processamento de pagamento</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="subsubsection">
+                    <h4>3.2.2 Gestão de Frota</h4>
+                    <ul>
+                        <li>RF5: O sistema deve gerenciar a frota de veículos
+                            <ul>
+                                <li>RF5.1: Cadastro de veículos</li>
+                                <li>RF5.2: Controle de manutenção</li>
+                                <li>RF5.3: Monitoramento em tempo real</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>3.3 Requisitos Não Funcionais</h3>
+
+                <div class="subsubsection">
+                    <h4>3.3.1 Desempenho</h4>
+                    <ul>
+                        <li>RNF1: Tempo de resposta máximo de 3 segundos</li>
+                        <li>RNF2: Suporte a 5.000 usuários simultâneos</li>
+                        <li>RNF3: Disponibilidade de 99,9%</li>
+                    </ul>
+                </div>
+
+                <div class="subsubsection">
+                    <h4>3.3.2 Segurança</h4>
+                    <ul>
+                        <li>RNF4: Criptografia de dados sensíveis</li>
+                        <li>RNF5: Autenticação em duas etapas</li>
+                        <li>RNF6: Registro de todas as operações</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="casos-de-uso" class="section">
+            <h2>4. Casos de Uso</h2>
+
+            <div class="subsection">
+                <h3>4.1 Passageiro</h3>
+                <ul>
+                    <a href="CU01.html"><li>CU01: Comprar Passagem Online</li></a>
+                    <a href="CU02.html"><li>CU02: Cancelar Passagem</li></a>
+                    <a href="CU03.html"><li>CU03: Consultar Viagens Disponíveis</li></a>
+                    <a href="CU04.html"><li>CU04: Realizar Pagamento</li></a>
+                    <a href="CU05.html"><li>CU05: Consultar Status do Pagamento</li></a>
+                    <a href="CU06.html"><li>CU06: Consultar Histórico de Compras</li></a>
+                    <a href="CU07.html"><li>CU07: Alterar Dados do Passageiro</li></a>
+                    <a href="CU08.html"><li>CU08: Verificar Disponibilidade de Assentos</li></a>
+                    <a href="CU09.html"><li>CU09: Registrar Reclamação</li></a>
+                    <a href="CU10.html"><li>CU10: Verificar Histórico de Viagens</li></a>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>4.2 Administrador</h3>
+                <ul>
+                    <a href="CU11.html"><li>CU11: Gerenciar Usuários do Sistema</li></a>
+                    <a href="CU12.html"><li>CU12: Gerenciar Frota</li></a>
+                    <a href="CU13.html"><li>CU13: Consultar Detalhes da Viagem</li></a>
+                    <a href="CU14.html"><li>CU14: Visualizar Notificações</li></a>
+                    <a href="CU15.html"><li>CU15: Consultar Disponibilidade de Veículos</li></a>
+                    <a href="CU16.html"><li>CU16: Atualizar Status do Veículo</li></a>
+                    <a href="CU17.html"><li>CU17: Atribuir Funcionalidade ao Veículo</li></a>
+                    <a href="CU18.html"><li>CU18: Alterar Rota de Viagem</li></a>
+                    <a href="CU19.html"><li>CU19: Excluir Viagem Agendada</li></a>
+                    <a href="CU20.html"><li>CU20: Atribuir Motorista a Veículo</li></a>
+                    <a href="CU21.html"><li>CU21: Consultar Veiculo Disponível</li></a>
+                    <a href="CU22.html"><li>CU22: Excluir Reclamação</li></a>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>4.3 Passageiro/Administrador</h3>
+                <ul>
+                    <a href="CU23.html"><li>CU23: Vizualizar Detalhes de Reclamação</li></a>
+                    <a href="CU24.html"><li>CU24: Enviar Notificação de Alteração</li></a>
+                </ul>
+            </div> 
+        </div>
+
+        <div id="informacoes-suporte" class="section">
+            <h2>5. Informações de Suporte</h2>
+            <div class="subsection">
+                <h3>5.1 Apêndice</h3>
+                <p><a href="https://www.canva.com/design/DAGXUk-vS8A/yzN8tBvL63fUiRzvFaiRkA/edit">Diagramas da arquitetura</a></p>
+                <a href="https://www.canva.com/design/DAGXUk-vS8A/yzN8tBvL63fUiRzvFaiRkA/edit" ><img src="img/arquitetura.png" alt="Diagrama de arquitetura" style="width: 800px; height: auto;" ></a>
+                
+                <p><a href="https://www.canva.com/design/DAGXsBcSfcY/qM_O_GEQgIFkEazDkSKdwA/edit?utm_content=DAGXsBcSfcY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de Caso de Uso (CU01)</a></p>
+                <a href="https://www.canva.com/design/DAGXsBcSfcY/qM_O_GEQgIFkEazDkSKdwA/edit?utm_content=DAGXsBcSfcY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" ><img src="img/UseCase.png" alt="Diagrama de Caso de Uso" style="width: 800px; height: auto;" ></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+    </div>
+</body>
+</html>

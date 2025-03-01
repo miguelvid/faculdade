@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU18: Alterar Rota de Viagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CU18: Alterar Rota de Viagem</h1>
+    <p><strong>Identificador:</strong> CU18</p>
+    <p><strong>Título:</strong> Alterar Rota de Viagem</p>
+    <p><strong>Ator(es):</strong> Administrador</p>
+    <p><strong>Descrição:</strong> Este caso de uso permite ao administrador alterar a rota de uma viagem previamente agendada, ajustando o trajeto, pontos de parada ou horário.</p>
+
+    <h2>Pré-condições</h2>
+    <ul>
+        <li>O administrador deve estar autenticado no sistema.</li>
+        <li>A viagem deve estar agendada no sistema.</li>
+    </ul>
+
+    <h2>Pós-condições</h2>
+    <ul>
+        <li>O sistema atualiza a rota da viagem no banco de dados.</li>
+    </ul>
+
+    <h2>Fluxo de Eventos</h2>
+    <ol>
+        <li>O administrador acessa a página de gerenciamento de viagens.</li>
+        <li>O administrador seleciona a viagem a ser alterada.</li>
+        <li>O administrador altera a rota da viagem.</li>
+        <li>O sistema valida e confirma a alteração da rota.</li>
+        <li>O sistema atualiza a viagem com a nova rota.</li>
+    </ol>
+
+    <h2>Requisitos Especiais</h2>
+    <ul>
+        <li>O sistema deve garantir que a alteração da rota não afete outros aspectos da viagem, como horários e veículos.</li>
+    </ul>
+
+    <h2>Cenários Alternativos</h2>
+    <ul>
+        <li>Se a rota alterada não for válida (ex: conflitante com outras viagens), o sistema exibe uma mensagem de erro.</li>
+    </ul>
+
+    <a href="index.html">Voltar para a página principal</a>
+</body>
+</html>
